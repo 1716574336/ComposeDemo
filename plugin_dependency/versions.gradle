@@ -1,0 +1,518 @@
+dependencies {
+    /* readme *
+    *
+    * 为了统一管理插件/依赖库版本，避免版本冲突，统一将插件/依赖库信息配置在此文件中，
+    * 通过执行 groovy 脚本，
+    * 解析此文件生成对应内容到 Deps.kt 中进行统一引用
+    *
+    * <dep> </dep> 之间是插件/依赖库引用路径，解析后会放到 Deps.kt 的 object 中
+    *
+    * 配置插件/依赖库引用说明：
+    * 1、配置插件/依赖库引用路径前备注格式： //<插件/依赖库名> : <备注>，这个部分会被解析确定插件/依赖库引用名称
+    * 2、配置插件/依赖库引用路径时以 implementation 作为开头
+    * 3、更新配置后执行以下方法同步更新到 Deps.kt：
+    *    AS -> Tools -> Groovy Console -> 复制 updateDeps_groovy.txt 文件中的代码进去，执行完成即可
+    */
+
+
+    /*<dep>*/
+    // kotlinVersion
+    implementation "1.4.30"
+    // composeVersion
+    implementation "1.0.0-beta01"
+
+    /*
+     * repository plugin
+     */
+    //gradlePlugin
+    implementation "com.android.tools.build:gradle:4.2.0-beta05"
+    //mavenGradlePlugin
+    implementation "com.github.dcendents:android-maven-gradle-plugin:2.1"
+    //bintrayPlugin
+    implementation "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
+    //groovyPlugin
+    implementation "org.codehaus.groovy:groovy-all:2.4.15"
+
+    /*
+     * test
+     */
+    //junit
+    implementation "junit:junit:4.13"
+    //runner
+    implementation "androidx.test:runner:1.3.0"
+    //rules
+    implementation "androidx.test:rules:1.3.0"
+    //espresso
+    implementation "androidx.test.espresso:espresso-core:3.3.0"
+    //junitExt
+    implementation "androidx.test.ext:junit:1.1.2"
+
+    /*
+     * Compose 工具包依赖项
+     */
+    //composeRuntime
+    implementation "androidx.compose.runtime:runtime:$composeVersion"
+    //composeRuntimeLiveData
+    implementation "androidx.compose.runtime:runtime-livedata:$composeVersion"
+    //composeUI
+    implementation "androidx.compose.ui:ui:$composeVersion"
+    //composeUITooling
+    implementation "androidx.compose.ui:ui-tooling:$composeVersion"
+    //composeFoundation
+    implementation "androidx.compose.foundation:foundation:$composeVersion"
+    //composeFoundationLayout
+    implementation "androidx.compose.foundation:foundation-layout:$composeVersion"
+    //composeMaterial
+    implementation "androidx.compose.material:material:$composeVersion"
+    //composeMaterialIcons
+    implementation "androidx.compose.material:material-icons-extended:$composeVersion"
+    //composeAnimation
+    implementation "androidx.compose.animation:animation:$composeVersion"
+    //composeUITest : androidTestImplementation
+    implementation "androidx.compose.ui:ui-test:$composeVersion"
+    //composeUITestJunit4 : androidTestImplementation
+    implementation "androidx.compose.ui:ui-test-junit4:$composeVersion"
+
+    /*
+     * support
+     */
+    //appcompat
+    implementation "androidx.appcompat:appcompat:1.3.0-beta01"
+    //androidxActivityKtx
+    implementation "androidx.activity:activity-ktx:1.2.0"
+    //coreKtx
+    implementation "androidx.core:core-ktx:1.5.0-beta01"
+    //activityCompose
+    implementation "androidx.activity:activity-compose:1.3.0-alpha03"
+    //supportV4
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    //supportFragment
+    implementation "androidx.fragment:fragment:1.2.5"
+    //supportCoreUtils
+    implementation "androidx.legacy:legacy-support-core-com.robot.app_ai.utils:1.0.0"
+    //annotations
+    implementation "androidx.annotation:annotation:1.1.0"
+    //design
+    implementation "com.google.android.material:material:1.2.1"
+    //cardView
+    implementation "androidx.cardview:cardview:1.0.0"
+    //recyclerView
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    //transition
+    implementation "androidx.transition:transition:1.3.1"
+    //constraintLayout
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+    //multiDex
+    implementation "androidx.multidex:multidex:2.0.1"
+
+    /*
+     * room
+     */
+    //roomRuntime
+    implementation "androidx.room:room-runtime:2.2.5"
+    //roomCompiler
+    implementation "androidx.room:room-compiler:2.2.5"
+    //roomRxJava2
+    implementation "androidx.room:room-rxjava2:2.2.5"
+    //roomTesting
+    implementation "androidx.room:room-testing:2.2.5"
+    //roomKtx
+    implementation "androidx.room:room-ktx:2.2.5"
+
+
+    //sqlcipher
+    implementation "net.zetetic:android-database-sqlcipher:4.2.0"
+    /*
+     * lifecycle
+     */
+    //lifecycleExtensions : view model + live data
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    //viewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.3.0-beta01"
+    //liveData
+    implementation "androidx.lifecycle:lifecycle-livedata:2.3.0-beta01"
+    //lifecycleRuntime : no view model or live data
+    implementation "androidx.lifecycle:lifecycle-runtime:2.3.0-beta01"
+    //lifecycleCommonJava8 : if using Java8, use the following instead of compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.3.0-beta01"
+    //lifecycleReactiveStreams : ReactiveStreams support for LiveData
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.3.0-beta01"
+    // lifecycleCompiler
+    implementation "androidx.lifecycle:lifecycle-compiler:2.3.0-beta01"
+
+
+    //lifecycleViewModelSavedState :ViewModel新出的状态保存库
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0"
+    //liveDataKtx :alternatively - just LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
+    //viewModelCompose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+    //viewModelKtx :alternatively - just ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    //lifecycleKtx : lifecycleScope.launch{}
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01"
+    //lifecycleRunntimeKtx : alternatively - Lifecycles only (no ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01"
+    //lifecycleReactivestreamsKtx : optional - ReactiveStreams support for LiveData
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.0-beta01"
+
+
+    /*
+    * navigation
+    * */
+    //navigationSafeArgsGradlePlugin : classpath
+    implementation "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.2"
+    //navigationFragmentKtx
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
+    //navigationUIKtx
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
+    //navigationFragment
+    implementation "androidx.navigation:navigation-fragment:2.3.2"
+    //navigationUI
+    implementation "androidx.navigation:navigation-ui:2.3.2"
+
+    /*
+     * work
+     */
+    //workRuntimeKtx
+    implementation "android.arch.work:work-runtime-ktx:1.0.1"
+    //workRuntime
+    implementation "android.arch.work:work-runtime:1.0.1"
+    //workFirebase
+    implementation "android.arch.work:work-firebase:1.0.0-alpha11"
+
+    /*
+     * google
+     */
+    //pagingRuntime
+    implementation "androidx.paging:paging-runtime:2.1.2"
+    //pagingRuntimeKtx
+    implementation "androidx.paging:paging-runtime-ktx:2.1.2"
+
+    //playServicesAd
+    implementation "com.google.android.gms:play-services-ads:19.6.0"
+    //googleService
+    implementation "com.google.gms:google-services:4.3.4"
+    //flexBox : https://github.com/google/flexbox-layout
+    implementation "com.google.android:flexbox:1.1.0"
+    //gson : https://github.com/google/gson
+    implementation "com.google.code.gson:gson:2.8.6"
+
+    //kotlinAndroidExtensions :插件
+    implementation "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
+    //kotlinStdlib
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    //kotlinStdlibJdk7
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    //kotlinStdlibJdk8
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    //kotlinGradlePlugin
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    //kotlinXCoroutinesAndroid
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    //kotlinXCoroutinesCore
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+    //kotlinReflect
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    // koinAndroid
+    implementation "org.koin:koin-android:2.0.1"
+    // koinViewModel
+    implementation "org.koin:koin-android-viewmodel:2.0.1"
+    // koinScope
+    implementation "org.koin:koin-android-scope:2.0.1"
+    // koinExt
+    implementation "org.koin:koin-android-ext:2.0.1"
+
+    /*
+     * 模块化框架
+     */
+    //appJoint : https://github.com/PrototypeZ/AppJoint/blob/master/README_zh.md
+    implementation "io.github.prototypez:app-joint:1.7"
+    //appJointCore
+    implementation "io.github.prototypez:app-joint-core:1.7"
+
+    /*
+     * 网络
+     */
+    //okHttp3 : https://github.com/square/okhttp
+    implementation "com.squareup.okhttp3:okhttp:4.7.2"
+    //okHttpUrlConnection
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:4.0.0"
+    //okHttp3LoggingInterceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+
+    /*
+     * retrofit2
+     */
+    //retrofit2 : https://github.com/square/retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    //retrofit2ConverterGson
+    implementation "com.squareup.retrofit2:converter-gson:2.7.2"
+    //retrofit2ConverterScalars
+    implementation "com.squareup.retrofit2:converter-scalars:2.5.0"
+    //retrofit2AdapterRxJava2
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.7.2"
+
+    //retrofitUrlManager : https://github.com/JessYanCoding/RetrofitUrlManager
+    implementation "me.jessyan:retrofit-url-manager:1.4.0"
+
+    /*
+     * 路由
+     */
+    //aRouterApi : https://github.com/alibaba/ARouter
+    implementation "com.alibaba:arouter-api:1.5.0"
+    //aRouterCompiler
+    implementation "com.alibaba:arouter-compiler:1.2.2"
+
+    /*
+     * 图片加载
+     */
+    //picasso : https://github.com/square/picasso
+    implementation "com.squareup.picasso:picasso:2.71828"
+
+    //glideV4 : https://github.com/bumptech/glide
+    implementation "com.github.bumptech.glide:glide:4.11.0"
+    //glideV4Compiler
+    implementation "com.github.bumptech.glide:compiler:4.11.0"
+
+    /*
+     * 事件总线
+     */
+    //eventBus : https://github.com/greenrobot/EventBus
+    implementation "org.greenrobot:eventbus:3.2.0"
+    //liveEventBus : https://github.com/JeremyLiao/LiveEventBus
+    implementation "com.jeremyliao:live-event-bus:1.4.0"
+
+    /*
+     * bug反馈
+     */
+    //buglyTinkerPlugin
+    implementation "com.tencent.bugly:tinker-support:1.2.0"
+    //buglyCrashReport
+    implementation "com.tencent.bugly:crashreport:3.1.0"
+    //buglyCrashReportUpgrade
+    implementation "com.tencent.bugly:crashreport_upgrade:1.4.5"
+    //buglyTinkerAndroid : 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+    implementation "com.tencent.tinker:tinker-android-lib:1.9.14.3"
+    //buglyNativeCrashReport : 其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+    implementation "com.tencent.bugly:nativecrashreport:3.7.1"
+
+
+
+    /*
+     * 自定义view
+     */
+    //discreteScrollview : https://github.com/yarolegovich/DiscreteScrollView
+    implementation "com.yarolegovich:discrete-scrollview:1.4.9"
+    //easySwipeMenuLayout : https://github.com/anzaizai/EasySwipeMenuLayout
+    implementation "com.github.anzaizai:EasySwipeMenuLayout:1.1.2"
+    //swipeDelMenuLayout :侧滑删除 https://github.com/mcxtzhang/SwipeDelMenuLayout/blob/master/README-cn.md
+    implementation "com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0"
+
+    //pageIndicatorView : https://github.com/romandanylyk/PageIndicatorView
+    implementation "com.romandanylyk:pageindicatorview:1.0.3"
+    //swipeBack
+    implementation "n.simonlee.widget:swipeback:1.0.15"
+    //banner
+    implementation "com.youth.banner:banner:1.4.10"
+    //viewPagerTransforms
+    implementation "com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar"
+    //circleImageView : https://github.com/hdodenhof/CircleImageView
+    implementation "de.hdodenhof:circleimageview:3.0.0"
+    //roundedImageView :圆角图片 https://github.com/vinc3m1/RoundedImageView
+    implementation "com.makeramen:roundedimageview:2.3.0"
+    //lRecyclerView
+    implementation "com.github.jdsjlzx:LRecyclerView:1.5.4.3"
+    //photoView : https://github.com/chrisbanes/PhotoView
+    implementation "com.github.chrisbanes:PhotoView:2.2.0"
+    //gifDrawable : https://github.com/koral--/android-gif-drawable
+    implementation "pl.droidsonroids.gif:android-gif-drawable:1.2.15"
+    //androidPickerView : 时间,地址选择器 https://github.com/Bigkoo/Android-PickerView
+    implementation "com.contrarywind:Android-PickerView:4.1.8"
+    //baseRecyclerViewAdapterHelper : recycleView相关 https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.1"
+    //numberPickerView : https://github.com/Carbs0126/NumberPickerView
+    implementation "n.carbswang.android:NumberPickerView:1.1.1"
+    //swipeBackLayout :侧滑退出 https://github.com/ikew0ng/SwipeBackLayout
+    implementation "me.imid.swipebacklayout.lib:library:1.1.0"
+    //switchButton : https://github.com/kyleduo/SwitchButton
+    implementation "com.kyleduo.switchbutton:library:2.0.0"
+    //NiceImageView
+    implementation "com.github.SheHuan:NiceImageView:1.0.5"
+    //flowLayout : 流式布局
+    implementation "com.hyman:flowlayout-lib:1.1.2"
+
+    //sectionedRecyclerview :分组的recyclerView
+    implementation "com.truizlop.sectionedrecyclerview:library:1.2.0"
+
+    //indicatorSeekBar :进度条 带顶部气泡 https://github.com/warkiz/IndicatorSeekBar
+    implementation "com.github.warkiz.widget:indicatorseekbar:2.1.0"
+    /*
+     * 动画
+     */
+    //transitionsEverywhere : https://github.com/andkulikov/Transitions-Everywhere
+    implementation "com.andkulikov:transitionseverywhere:1.8.0"
+
+    /*
+     * 权限
+     */
+    //andPermission : https://github.com/yanzhenjie/AndPermission
+    implementation "com.yanzhenjie:permission:2.0.0-rc5"
+
+    /*
+     * 实用
+     */
+    //butterKnife : https://github.com/JakeWharton/butterknife
+    implementation "com.jakewharton:butterknife:10.2.1"
+    //butterKnifeCompiler
+    implementation "com.jakewharton:butterknife-compiler:10.2.1"
+    //butterKnifeGradlePlugin
+    implementation "com.jakewharton:butterknife-gradle-plugin:10.2.1"
+
+    //rxJava2 : https://github.com/ReactiveX/RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    //rxAndroid
+    implementation "io.reactivex:rxandroid:1.0.1"
+    //rxAndroid2
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
+
+    //rxLifecycle : https://github.com/trello/RxLifecycle
+    implementation "com.trello.rxlifecycle2:rxlifecycle:2.2.2"
+    //rxLifecycleComponents
+    implementation "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2"
+    //rxLifecycleNavi
+    implementation "com.trello.rxlifecycle2:rxlifecycle-navi:2.2.2"
+
+    //oneDrawable : https://github.com/maoruibin/OneDrawable
+    implementation "com.github.maoruibin:OneDrawable:1.1.0"
+
+    //xutils
+    implementation "org.xutils:xutils:3.5.0"
+    //utilCode
+    implementation "com.blankj:utilcodex:1.23.7"
+    //httpCore
+    implementation "org.apache.httpcomponents:httpcore:4.4.12"
+    //zxing
+    implementation "com.google.zxing:core:3.3.2"
+    //logger
+    implementation "com.orhanobut:logger:1.15"
+
+    //rxBinding
+    implementation "com.jakewharton.rxbinding:rxbinding:0.3.0"
+    //rxBindingAppcompatV7
+    implementation "com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.3.0"
+    //rxBindingDesign
+    implementation "com.jakewharton.rxbinding:rxbinding-design:0.3.0"
+
+    //greenDao
+    implementation "de.greenrobot:greendao:2.0.0"
+    //mmkv : 基于mmap的高性能通用key-value组件 https://github.com/Tencent/MMKV/blob/master/readme_cn.md
+    implementation "com.tencent:mmkv:1.0.16"
+
+    //javaxAnnotation
+    implementation "org.glassfish:javax.annotation:10.0-b28"
+
+    //dagger
+    implementation "com.google.dagger:dagger:2.29.1"
+    //daggerCompiler
+    implementation "com.google.dagger:dagger-compiler:2.29.1"
+
+    // fgchecker
+    implementation "com.rvalerio:fgchecker:1.1.0"
+
+    //BroadcastReceiver : https://github.com/cbfg5210/BroadcastReceiver
+    implementation "com.github.cbfg5210:BroadcastReceiver:0.6"
+    //BRecyclerAdapter : https://github.com/cbfg5210/BRecyclerAdapter
+    implementation "com.github.cbfg5210:BRecyclerAdapter:0.5"
+    //BDialog : https://github.com/cbfg5210/BDialog
+    implementation "com.github.cbfg5210:BDialog:0.6"
+    //BUtil : https://github.com/cbfg5210/BUtil
+    implementation "com.github.cbfg5210:BUtil:0.2"
+
+    /*
+     * 插件
+     */
+    //saveState : https://github.com/PrototypeZ/SaveState
+    implementation "io.github.prototypez:save-state:0.2.3"
+
+    /*
+    * 测试工具
+    */
+    //stetho : https://github.com/facebook/stetho
+    implementation "com.facebook.stetho:stetho:1.5.0"
+    //stethoOkHttp3
+    implementation "com.facebook.stetho:stetho-okhttp3:1.5.0"
+    //stethoUrlConnection
+    implementation "com.facebook.stetho:stetho-urlconnection:1.5.0"
+
+    //leakCanaryAndroid : https://github.com/square/leakcanary
+    implementation "com.squareup.leakcanary:leakcanary-android:2.1"
+    //leakCanaryAndroidNoOp
+    implementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
+    //leakCanarySupportFragment
+    implementation "com.squareup.leakcanary:leakcanary-support-fragment:1.6.1"
+
+    //blockCanaryAndroid :卡顿监控和提示 https://github.com/markzhai/AndroidPerformanceMonitor
+    implementation "com.github.markzhai:blockcanary-android:1.5.0"
+
+    //crashwoodpecker
+    implementation "me.drakeet.library:crashwoodpecker:2.1.1"
+
+    //debugDb
+    implementation "com.amitshekhar.android:debug-db:1.0.6"
+
+    //rxAndroidBle : https://github.com/Polidea/RxAndroidBle
+    implementation "com.polidea.rxandroidble2:rxandroidble:1.9.0"
+    //ble : https://github.com/xiaoyaoyou1212/BLE
+    implementation "com.vise.xiaoyaoyou:baseble:2.0.5"
+
+
+    /*
+     * RecyclerView 的 DataBinding套装
+     */
+    //bindingcollectionadapter
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0"
+    //bindingcollectionadapter_recyclerview
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0"
+    //bindingcollectionadapter3
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.0.0"
+    //bindingcollectionadapter_recyclerview3
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0"
+    //rxbinding
+    implementation "com.jakewharton.rxbinding2:rxbinding:2.1.1"
+    //fastjson
+    implementation "com.alibaba:fastjson:1.2.75"
+
+
+    //hotfix : 啊里热修复
+    implementation "com.aliyun.ams:alicloud-android-hotfix:3.2.14"
+    //kLog
+    implementation "com.github.zhaokaiqiang.klog:library:1.6.0"
+
+    //viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.1.0-alpha01"
+    //coordinatorLayout
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+
+    //wcdb : 微信的数据库加密工具
+    implementation "com.tencent.wcdb:wcdb-android:1.0.8"
+    //safeRoom : 是 Room 支持 sqlcipher 的第三方库
+    implementation "com.commonsware.cwac:saferoom:1.1.3"
+
+
+    /*hilt support begin*/
+    //hilt
+    implementation "com.google.dagger:hilt-android:2.29.1-alpha"
+    //hiltCompiler : kapt
+    implementation "com.google.dagger:hilt-android-compiler:2.29.1-alpha"
+    //dataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha05"
+    //androidxActivity
+    implementation "androidx.activity:activity:1.2.0"
+    //accompanist
+    implementation "dev.chrisbanes.accompanist:accompanist-insets:0.6.0"
+    /*hilt support end*/
+    /*</dep>*/
+
+
+}

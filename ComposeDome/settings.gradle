@@ -1,0 +1,4 @@
+rootProject.name = "ComposeDemo"
+include ':app'
+
+//includeBuild("D:\\other\\demo\\ComposeDome\\plugin_dependency")

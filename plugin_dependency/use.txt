@@ -1,0 +1,11 @@
+1、新建项目
+2、把 plugin_dependency 整个文件夹复制到与项目同级的路径上
+3、在项目的 settings.gradle 中 添加
+    includeBuild("D:\\other\\demo\\...\\plugin_dependency")
+4、要引用的 module 包(包括 app)中的 build.gradle 中顶部加
+    plugins {
+        // 这个 id 就是在 plugin_dependency 文件夹下 build.gradle 文件内定义的id
+        id "plugin.dep.box"
+    }
+5、如果 versions.gradle 中的内容进行了修改，就把 updateDeps_groovy.txt 里的内容复制到 Groovy Console 执行一下就行。
+    Groovy Console 在 工具栏 Tools 中。

@@ -1,0 +1,152 @@
+plugins {
+	id 'com.android.application'
+	id 'kotlin-android'
+//	id 'plugin.dep.box'
+}
+
+android {
+//	compileSdkVersion Versions.compileSdk
+	compileSdkVersion 30
+
+	defaultConfig {
+		applicationId "com.cenming.composedemo"
+//		minSdkVersion Versions.minSdk
+//		targetSdkVersion Versions.targetSdk
+		minSdkVersion 22
+		targetSdkVersion 30
+		versionCode 1
+		versionName "1.0"
+
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+	}
+	/**
+	 * 使用 java8
+	 */
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+
+	/**
+	 * 用 Java 1.8 编译 kotlin
+	 */
+	kotlinOptions {
+		jvmTarget = '1.8'
+		allWarningsAsErrors = true
+	}
+
+	/**
+	 * compose
+	 */
+	buildFeatures { compose = true }
+	composeOptions { kotlinCompilerExtensionVersion = "1.0.0-beta01" }
+
+	packagingOptions {
+		excludes += "/META-INF/AL2.0"
+		excludes += "/META-INF/LGPL2.1"
+	}
+}
+
+dependencies {
+	implementation fileTree(include: ['*.jar'], dir: 'libs')
+	// design
+//	implementation Deps.design
+	implementation 'com.google.android.material:material:1.3.0'
+	// 单元测试 junit
+//	testImplementation Deps.junit
+	testImplementation 'junit:junit:4.13.2'
+	// 单元测试 runner
+//	androidTestImplementation Deps.runner
+	androidTestImplementation 'androidx.test:runner:1.3.0'
+	// 单元测试 runner
+//	androidTestImplementation Deps.rules
+	androidTestImplementation 'androidx.test:rules:1.3.0'
+	// 单元测试 espresso
+//	androidTestImplementation Deps.espresso
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+	// 单元测试 junitExt
+//	androidTestImplementation Deps.junitExt
+	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+
+	// kotlin
+//	implementation Deps.kotlinStdlib
+	implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.30'
+	// kotlinXCoroutinesAndroid
+//	implementation Deps.kotlinXCoroutinesAndroid
+	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+
+	// composeRuntime
+//	implementation Deps.composeRuntime
+	implementation 'androidx.compose.runtime:runtime:1.0.0-beta01'
+	// composeRuntimeLiveData
+//	implementation Deps.composeRuntimeLiveData
+	implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-beta01'
+	// composeUI
+//	implementation Deps.composeUI
+	implementation 'androidx.compose.ui:ui:1.0.0-beta01'
+	// composeUITooling
+//	implementation Deps.composeUITooling
+	implementation 'androidx.compose.ui:ui-tooling:1.0.0-beta01'
+	// composeFoundation
+//	implementation Deps.composeFoundation
+	implementation 'androidx.compose.foundation:foundation:1.0.0-beta01'
+	// composeFoundationLayout
+//	implementation Deps.composeFoundationLayout
+	implementation 'androidx.compose.foundation:foundation-layout:1.0.0-beta01'
+	// composeMaterial
+//	implementation Deps.composeMaterial
+	implementation 'androidx.compose.material:material:1.0.0-beta01'
+	// composeMaterialIcons
+//	implementation Deps.composeMaterialIcons
+	implementation 'androidx.compose.material:material-icons-extended:1.0.0-beta01'
+	// composeAnimation
+//	implementation Deps.composeAnimation
+	implementation 'androidx.compose.animation:animation:1.0.0-beta01'
+
+	// appCompat
+//	implementation Deps.appcompat
+	implementation 'androidx.appcompat:appcompat:1.3.0-beta01'
+	// androidxActivityKtx
+//	implementation Deps.androidxActivityKtx
+	implementation 'androidx.activity:activity-ktx:1.2.0'
+	// coreKtx
+//	implementation Deps.coreKtx
+	implementation 'androidx.core:core-ktx:1.5.0-beta01'
+	// activityCompose
+//	implementation Deps.activityCompose
+	implementation 'androidx.activity:activity-compose:1.3.0-alpha03'
+
+	// lifecycleViewModelSavedState
+//	implementation Deps.lifecycleViewModelSavedState
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0'
+	// liveDataKtx
+//	implementation Deps.liveDataKtx
+	implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+	// viewModelCompose
+//	implementation Deps.viewModelCompose
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02'
+	// accompanist
+//	implementation Deps.accompanist
+	implementation 'dev.chrisbanes.accompanist:accompanist-insets:0.6.0'
+}
+
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+	kotlinOptions {
+		// Treat all Kotlin warnings as errors
+		allWarningsAsErrors = true
+		freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+		// Enable experimental coroutines APIs, including Flow
+		freeCompilerArgs += '-Xopt-in=kotlin.Experimental'
+
+		// Set JVM target to 1.8
+		jvmTarget = "1.8"
+	}
+}
