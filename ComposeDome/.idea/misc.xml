@@ -3,28 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/avatar_1.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/avatar_diuwuxian.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_add.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_back.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_back_right.xml" value="0.33" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_bg_newyear_right.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contact_add.xml" value="0.337037037037037" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contact_chat.xml" value="0.25" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contact_group.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contact_official.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contact_tag.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contacts_filled.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_contacts_outlined.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_discover_filled.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_discover_outlined.xml" value="0.3388888888888889" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_enterprise.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_phone.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_radar.xml" value="0.33" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_search.xml" value="0.390625" />
-        <entry key="..\:/other/demo/ComposeDome/ComposeDome/app/src/main/res/drawable/ic_sweep.xml" value="0.33" />
+        <entry key="..\:/other/demo/ComposeDemo/ComposeDome/app/src/main/res/drawable/ic_add_friend.xml" value="0.390625" />
+        <entry key="..\:/other/demo/ComposeDemo/ComposeDome/app/src/main/res/drawable/ic_contact_add.xml" value="0.390625" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="androidx.compose.runtime.Composable" />
+    </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">

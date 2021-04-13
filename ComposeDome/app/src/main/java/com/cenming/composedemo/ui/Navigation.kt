@@ -9,14 +9,13 @@ import androidx.compose.runtime.setValue
 import androidx.core.os.bundleOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import com.cenming.composedemo.ui.Screen.Home
 import com.cenming.composedemo.ui.Screen.Interests
 import com.cenming.composedemo.ui.Screen.Article
 import com.cenming.composedemo.ui.ScreenName.HOME
 import com.cenming.composedemo.ui.ScreenName.INTERESTS
 import com.cenming.composedemo.ui.ScreenName.ARTICLE
-import com.cenming.composedemo.ui.second.SecondActivity
+import com.cenming.composedemo.ui.weChat.second.SecondActivity
 import com.cenming.composedemo.utils.getMutableStateOf
 
 
@@ -135,6 +134,10 @@ class NavigationViewModel (private val mContext: Application, savedStateHandle: 
 	 * 页面跳转
 	 */
 	fun startActivity(){
-		this.mContext.startActivity(Intent(this.mContext, SecondActivity::class.java))
+		this.mContext.startActivity(
+			Intent(this.mContext, SecondActivity::class.java).also {
+				it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+			}
+		)
 	}
 }

@@ -12,25 +12,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jetnews"
-        android:appComponentFactory=""
-        tools:replace="android:appComponentFactory" >
+         >
+        <!--android:appComponentFactory=""
+        tools:replace="android:appComponentFactory"-->
 
-        <!--<activity android:name=".ui.MainActivity">
-            <intent-filter>
+        <activity android:name=".ui.MainActivity"
+            android:exported="true">
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>-->
+            </intent-filter>-->
+        </activity>
 
-        <activity android:name=".ui.second.SecondActivity">
+        <activity android:name=".ui.weChat.second.SecondActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+
+        <activity android:name=".demo.MyDemoActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

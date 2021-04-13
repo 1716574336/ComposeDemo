@@ -24,7 +24,7 @@ import com.cenming.composedemo.data.Result
  *
  * 这对于希望在加载时显示上一次成功结果的屏幕或以后的刷新导致错误的屏幕很有用
  */
-data class UiState<T>(
+data class UiState<T> constructor(
     val loading: Boolean = false,
     val exception: Exception? = null,
     val data: T? = null
