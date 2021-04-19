@@ -16,10 +16,8 @@
 
 package com.cenming.composedemo.ui
 
-import android.util.Log
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
@@ -41,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
 
 private val RefreshDistance = 80.dp
-private val LoadDistance = 100.dp
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -85,79 +82,6 @@ fun SwipeToRefreshLayout(
         //  workaround for a bug in the SwipableState API. Currently, state.value is a duplicated
         //  source of truth of refreshingState.
         LaunchedEffect(refreshingState) { state.animateTo(refreshingState) }
-    }
-}
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun SwipeToRefreshAndLoadingLayout(
-    refreshingState: Boolean = true,
-    loadingState: Boolean = true,
-    onRefresh: () -> Unit,
-    onLoading: () -> Unit,
-    refreshLayout: @Composable () -> Unit,
-    loadingLayout: @Composable () -> Unit,
-    content: @Composable () -> Unit
-) {
-    val refreshDistance = with(LocalDensity.current) { RefreshDistance.toPx() }
-    val loadDistance = with(LocalDensity.current) { LoadDistance.toPx() }
-
-    val refreshState = rememberSwipeableState(refreshingState) { newValue ->
-        if (newValue && !refreshingState) onRefresh()
-        true
-    }
-    val loadState = rememberSwipeableState(loadingState) { newValue ->
-        if (newValue && !loadingState) onLoading()
-        true
-    }
-    Box(
-        modifier = Modifier
-            .nestedScroll(refreshState.PreUpPostDownNestedScrollConnection)
-            .swipeable(
-                state = refreshState,
-                anchors = mapOf(
-                    -refreshDistance to false,
-                    refreshDistance to true
-                ),
-                thresholds = { _, _ -> FractionalThreshold(0.5f) },
-                orientation = Orientation.Vertical
-            )
-            .nestedScroll(refreshState.LoadPreUpPostDownNestedScrollConnection)
-            .swipeable(
-                state = loadState,
-                anchors = mapOf(
-                    loadDistance to false,
-                    -loadDistance to true
-                ),
-                thresholds = { _, _ -> FractionalThreshold(0.5f) },
-                orientation = Orientation.Vertical
-            )
-    ) {
-        content()
-        Box(
-            Modifier
-                .align(Alignment.TopCenter)
-                .offset { IntOffset(0, refreshState.offset.value.roundToInt()) }
-        ) {
-            if (refreshState.offset.value != -refreshDistance) {
-                refreshLayout()
-            }
-        }
-        Box(
-            Modifier
-                .align(Alignment.BottomCenter)
-                .offset { IntOffset(0, refreshState.offset.value.roundToInt()) }
-        ) {
-            if (loadState.offset.value != loadDistance) {
-                loadingLayout()
-            }
-        }
-
-        // TODO (https://issuetracker.google.com/issues/164113834): This state->event trampoline is a
-        //  workaround for a bug in the SwipableState API. Currently, state.value is a duplicated
-        //  source of truth of refreshingState.
-        LaunchedEffect(refreshingState) { refreshState.animateTo(refreshingState) }
-        LaunchedEffect(loadState) { loadState.animateTo(loadingState) }
     }
 }
 
@@ -208,56 +132,6 @@ private val <T> SwipeableState<T>.PreUpPostDownNestedScrollConnection: NestedScr
             performFling(velocity = Offset(available.x, available.y).toFloat())
             return Velocity.Zero
         }
-
-        private fun Float.toOffset(): Offset = Offset(0f, this)
-
-        private fun Offset.toFloat(): Float = this.y
-    }
-
-/**
- * 上拉加载
- */
-@ExperimentalMaterialApi
-private val <T> SwipeableState<T>.LoadPreUpPostDownNestedScrollConnection: NestedScrollConnection
-    get() = object : NestedScrollConnection {
-            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                    val delta = available.toFloat()
-                    return if (delta > 0 && source == NestedScrollSource.Drag) {
-                        performDrag(delta).toOffset()
-                    } else {
-                        Offset.Zero
-                    }
-                }
-
-            override fun onPostScroll(
-                consumed: Offset,
-                available: Offset,
-                source: NestedScrollSource
-            ): Offset {
-                return if (source == NestedScrollSource.Drag) {
-                    performDrag(available.toFloat()).toOffset()
-                } else {
-                    Offset.Zero
-                }
-            }
-
-            override suspend fun onPreFling(available: Velocity): Velocity {
-                val toFling = Offset(available.x, available.y).toFloat()
-                return if (toFling > 0) {
-                    performFling(velocity = toFling)
-                    available
-                } else {
-                    Velocity.Zero
-                }
-            }
-
-            override suspend fun onPostFling(
-                consumed: Velocity,
-                available: Velocity
-            ): Velocity {
-                performFling(velocity = Offset(available.x, available.y).toFloat())
-                return Velocity.Zero
-            }
 
         private fun Float.toOffset(): Offset = Offset(0f, this)
 

@@ -46,7 +46,7 @@ android {
 	 * compose
 	 */
 	buildFeatures { compose = true }
-	composeOptions { kotlinCompilerExtensionVersion = "1.0.0-beta01" }
+	composeOptions { kotlinCompilerExtensionVersion = compose_version }
 
 	packagingOptions {
 		excludes += "/META-INF/AL2.0"
@@ -57,84 +57,62 @@ android {
 dependencies {
 	implementation fileTree(include: ['*.jar'], dir: 'libs')
 	// design
-//	implementation Deps.design
 	implementation 'com.google.android.material:material:1.3.0'
 	// 单元测试 junit
-//	testImplementation Deps.junit
 	testImplementation 'junit:junit:4.13.2'
 	// 单元测试 runner
-//	androidTestImplementation Deps.runner
 	androidTestImplementation 'androidx.test:runner:1.3.0'
 	// 单元测试 runner
-//	androidTestImplementation Deps.rules
 	androidTestImplementation 'androidx.test:rules:1.3.0'
 	// 单元测试 espresso
-//	androidTestImplementation Deps.espresso
 	androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 	// 单元测试 junitExt
-//	androidTestImplementation Deps.junitExt
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
 	// kotlin
-//	implementation Deps.kotlinStdlib
-	implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.30'
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 	// kotlinXCoroutinesAndroid
-//	implementation Deps.kotlinXCoroutinesAndroid
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 
 	// composeRuntime
-//	implementation Deps.composeRuntime
-	implementation 'androidx.compose.runtime:runtime:1.0.0-beta01'
+	implementation "androidx.compose.runtime:runtime:$compose_version"
 	// composeRuntimeLiveData
-//	implementation Deps.composeRuntimeLiveData
-	implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-beta01'
+	implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
 	// composeUI
-//	implementation Deps.composeUI
-	implementation 'androidx.compose.ui:ui:1.0.0-beta01'
+	implementation "androidx.compose.ui:ui:$compose_version"
 	// composeUITooling
-//	implementation Deps.composeUITooling
-	implementation 'androidx.compose.ui:ui-tooling:1.0.0-beta01'
+	implementation "androidx.compose.ui:ui-tooling:$compose_version"
 	// composeFoundation
-//	implementation Deps.composeFoundation
-	implementation 'androidx.compose.foundation:foundation:1.0.0-beta01'
+	implementation "androidx.compose.foundation:foundation:$compose_version"
 	// composeFoundationLayout
-//	implementation Deps.composeFoundationLayout
-	implementation 'androidx.compose.foundation:foundation-layout:1.0.0-beta01'
+	implementation "androidx.compose.foundation:foundation-layout:$compose_version"
 	// composeMaterial
-//	implementation Deps.composeMaterial
-	implementation 'androidx.compose.material:material:1.0.0-beta01'
+	implementation "androidx.compose.material:material:$compose_version"
 	// composeMaterialIcons
-//	implementation Deps.composeMaterialIcons
-	implementation 'androidx.compose.material:material-icons-extended:1.0.0-beta01'
+	implementation "androidx.compose.material:material-icons-extended:$compose_version"
 	// composeAnimation
-//	implementation Deps.composeAnimation
-	implementation 'androidx.compose.animation:animation:1.0.0-beta01'
+	implementation "androidx.compose.animation:animation:$compose_version"
 
 	// appCompat
-//	implementation Deps.appcompat
-	implementation 'androidx.appcompat:appcompat:1.3.0-beta01'
+	implementation "androidx.appcompat:appcompat:1.3.0-beta01"
 	// androidxActivityKtx
-//	implementation Deps.androidxActivityKtx
-	implementation 'androidx.activity:activity-ktx:1.2.0'
+	implementation "androidx.activity:activity-ktx:1.2.0"
 	// coreKtx
-//	implementation Deps.coreKtx
-	implementation 'androidx.core:core-ktx:1.5.0-beta01'
+	implementation "androidx.core:core-ktx:1.5.0-beta01"
 	// activityCompose
-//	implementation Deps.activityCompose
-	implementation 'androidx.activity:activity-compose:1.3.0-alpha03'
+	implementation "androidx.activity:activity-compose:1.3.0-alpha03"
 
 	// lifecycleViewModelSavedState
-//	implementation Deps.lifecycleViewModelSavedState
-	implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0'
+	implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0"
 	// liveDataKtx
-//	implementation Deps.liveDataKtx
-	implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+	implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
 	// viewModelCompose
-//	implementation Deps.viewModelCompose
-	implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02'
+	implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
 	// accompanist
-//	implementation Deps.accompanist
-	implementation 'dev.chrisbanes.accompanist:accompanist-insets:0.6.0'
+	implementation "dev.chrisbanes.accompanist:accompanist-insets:0.6.0"
+	// paging
+	implementation "androidx.paging:paging-runtime:3.0.0-beta02"
+	implementation "androidx.paging:paging-compose:1.0.0-alpha08"
 }
 
 
