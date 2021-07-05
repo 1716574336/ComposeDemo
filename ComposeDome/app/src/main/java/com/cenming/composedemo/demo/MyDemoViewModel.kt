@@ -38,7 +38,7 @@ class MyDemoViewModel : ViewModel() {
 		}
 //		if(this.mIsRefresh.value) this.mIsRefresh.value = false
 //		this.mIsRefresh.value = page == 1
-		println("page: $page ; mIsRefresh:${this.mIsRefresh.value}")
+//		println("page: $page ; mIsRefresh:${this.mIsRefresh.value}")
 		return tempList
 	}
 }
