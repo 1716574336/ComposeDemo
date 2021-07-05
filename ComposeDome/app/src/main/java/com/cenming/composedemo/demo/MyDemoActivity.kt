@@ -28,15 +28,20 @@ class MyDemoActivity : AppCompatActivity(){
 				DemoDataContent(
 					viewModel = viewModel,
 					emptyContentLayout = { lazyItems ->
-						Box(Modifier.fillMaxSize()) {
+						Box(
+							modifier = Modifier.fillMaxSize(),
+							contentAlignment = Alignment.Center
+						) {
 							Button(onClick = {
 								lazyItems.refresh()
 							}) {
-								Text(text = "加载出错")
+								Text(text = "暂无数据,点击刷新!")
 							}
 						}
 					},
-					onRefresh = { it.refresh() },
+					onRefresh = {
+						it.refresh()
+					},
 					refreshLayout = { Text(text = "获取数据中...") },
 					itemErrorLayout = { lazyItems ->
 						Row(
@@ -58,17 +63,26 @@ class MyDemoActivity : AppCompatActivity(){
 						Text(text = "加载中...")
 					},
 					errorLayout = { lazyItems ->
-						Button(onClick = {
-							lazyItems.refresh()
-						}) {
-							Text(text = "加载出错")
+						Box(
+							modifier = Modifier.fillMaxSize(),
+							contentAlignment = Alignment.Center
+						) {
+							Button(onClick = {
+								lazyItems.refresh()
+							}) {
+								Text(text = "加载出错")
+							}
 						}
 					},
 					loadingLayout = {
-						Text(text = "loading...")
+						Box(
+							modifier = Modifier.fillMaxSize(),
+							contentAlignment = Alignment.Center
+						) {
+							Text(text = "loading...")
+						}
 					}
 				)
-
 			}
 		}
 	}

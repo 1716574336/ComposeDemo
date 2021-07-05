@@ -14,6 +14,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.cenming.composedemo.demo.data.DemoData
 import com.cenming.composedemo.ui.SwipeToRefreshLayout
+import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 
 /**
@@ -35,9 +36,10 @@ fun DemoDataContent(
 	loadingLayout: @Composable () -> Unit,
 ) {
 	val items = viewModel.mProjects.collectAsLazyPagingItems()
+	println("state: ${items.loadState.refresh} \n count:${items.itemCount}")
 	RefreshLayout(
-		refreshingState = viewModel.mIsRefresh,
-		empty = items.itemCount == 0,
+		refreshingState = viewModel.mIsRefresh.value,
+		empty = items.itemCount == 0 && items.loadState.refresh !is LoadState.Loading,
 		emptyContent = { emptyContentLayout(items) },
 		onRefresh = { onRefresh(items) },
 		refreshLayout = { refreshLayout() }
@@ -68,13 +70,15 @@ fun RefreshLayout(
 	refreshLayout: @Composable () -> Unit,
 	content: @Composable () -> Unit
 ) {
-	if (empty) {
-		emptyContent()
-	} else {
-		SwipeToRefreshLayout(
-			refreshingState = refreshingState, onRefresh = onRefresh,
-			refreshIndicator = refreshLayout, content = content
-		)
+	Box(modifier = Modifier.statusBarsPadding()){
+		if (empty) {
+			emptyContent()
+		} else {
+			SwipeToRefreshLayout(
+				refreshingState = refreshingState, onRefresh = onRefresh,
+				refreshIndicator = refreshLayout, content = content
+			)
+		}
 	}
 }
 

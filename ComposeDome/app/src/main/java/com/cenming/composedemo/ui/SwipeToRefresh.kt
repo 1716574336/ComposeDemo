@@ -50,19 +50,21 @@ fun SwipeToRefreshLayout(
 ) {
     val refreshDistance = with(LocalDensity.current) { RefreshDistance.toPx() }
     val state = rememberSwipeableState(refreshingState) { newValue ->
-        // compare both copies of the swipe state before calling onRefresh(). This is a workaround.
+        println("newValue: $newValue ; refreshingState:${refreshingState}")
         if (newValue && !refreshingState) onRefresh()
         true
     }
+    println("refreshingState:${refreshingState}")
     Box(
         modifier = Modifier
-            .nestedScroll(
-                state.PreUpPostDownNestedScrollConnection
-            ) //            .nestedScroll(state.LoadPreUpPostDownNestedScrollConnection)
+            .nestedScroll(state.PreUpPostDownNestedScrollConnection)
             .swipeable(
-                state = state, anchors = mapOf(
-                    -refreshDistance to false, refreshDistance to true
-                ), thresholds = { _, _ -> FractionalThreshold(0.5f) },
+                state = state,
+                anchors = mapOf(
+                    -refreshDistance to false,
+                    refreshDistance to true
+                ),
+                thresholds = { _, _ -> FractionalThreshold(0.5f) },
                 orientation = Orientation.Vertical
             )
     ) {
@@ -70,17 +72,12 @@ fun SwipeToRefreshLayout(
         Box(
             Modifier
                 .align(Alignment.TopCenter)
-//                .align(Alignment.BottomCenter)
                 .offset { IntOffset(0, state.offset.value.roundToInt()) }
         ) {
             if (state.offset.value != -refreshDistance) {
                 refreshIndicator()
             }
         }
-
-        // TODO (https://issuetracker.google.com/issues/164113834): This state->event trampoline is a
-        //  workaround for a bug in the SwipableState API. Currently, state.value is a duplicated
-        //  source of truth of refreshingState.
         LaunchedEffect(refreshingState) { state.animateTo(refreshingState) }
     }
 }

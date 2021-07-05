@@ -148,7 +148,6 @@ fun HomeScreen(
 				empty = posts.initialLoad,
 				emptyContent = { FullScreenLoading() },
 				loading = posts.loading,
-//				loading = true,
 				onRefresh = onRefreshPosts,
 				content = {
 					HomeScreenErrorAndContent(

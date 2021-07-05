@@ -54,6 +54,7 @@ class FakePostsRepository : PostsRepository {
 
 	override suspend fun getPosts(): Result<List<Post>> =
 			withContext(Dispatchers.IO) {		// 假装我们的网络速度很慢
+				println("getPost()")
 				delay(800)
 				if (shouldRandomlyFail()) {
 					Result.Error(IllegalStateException())

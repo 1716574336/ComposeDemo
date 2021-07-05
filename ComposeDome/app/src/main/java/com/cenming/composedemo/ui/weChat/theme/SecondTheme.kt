@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
 
-private val LightColorPalette = WeColors(
+ val LightColorPalette = WeColors(
 	bottomBar = white1,
 	background = white2,
 	listItem = white,
@@ -72,7 +72,7 @@ private val NewYearColorPalette = WeColors(
 	chatPageBgAlpha = 1f,
 )
 
-private val LocalWeColors = compositionLocalOf {
+val LocalWeColors = compositionLocalOf {
 	LightColorPalette
 }
 
