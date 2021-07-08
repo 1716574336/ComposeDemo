@@ -36,6 +36,7 @@ class MyDemoViewModel : ViewModel() {
 			delay(5 * 10)
 			tempList.add(DemoData(i, "msg$i"))
 		}
+		// 会触发两次?未找到原因
 //		if(this.mIsRefresh.value) this.mIsRefresh.value = false
 //		this.mIsRefresh.value = page == 1
 //		println("page: $page ; mIsRefresh:${this.mIsRefresh.value}")
